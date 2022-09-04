@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Prodcut List</title>
-    <link rel="stylesheet" href="style/desgin.css">
+    <!-- <link rel="stylesheet" href="style/desgin.css"> -->
+    <link rel="stylesheet" href="./style/design.css">
 </head>
 <body>
     <header>
-        <div class="title-box">
-            <h1>Product List</h1>
-            <div>
-                <button><a href="product-add.php">ADD</a></button>
-                <input name="delete" type="submit" id="delete" value="Delete">
-            </div>
+        <h1>Product List</h1>
+        <div>
+            <button class="add-product"><a href="product-add.php">ADD</a></button>
+            <button class="delete-checkbox">MASS DELETE</button>   
+            <!-- <input name="delete" type="submit" id="delete" value="Delete"> -->
         </div>
     </header>
     <main>
         <!-- GUARDAR LOS VALORES EN UNA VARIABLE Y DESPUES MOSTRARLA EN LA TABLA DE HTML-->
-        <div class="main-box">
                 <?php
                     $username = "root"; 
                     $password = ""; 
@@ -27,18 +26,18 @@
                     $query = $mysqli->query("SELECT * FROM shop");
                     while ($row = $query->fetch_assoc()) {
                         if($row['typee'] == 'prod-DVD'){
-                            echo        "<div>
-                                            <h3>Product</h3>
+                            echo        "<div class='product'>
                                             <input name='checkbox[]' type='checkbox' id='checkbox[]' value=".$row['id'].">
-                                            <p>Sku: ".$row['skuu']."</p>
-                                            <p>Name: ".$row['namee']."</p>
-                                            <p>Type: DVD</p>
-                                            <p>Price: ".$row['pricee']."</p>
-                                            <p>Size: ".$row['sizee']."</p>
+                                            <div class='product-container'>
+                                                <p>Sku: ".$row['skuu']."</p>
+                                                <p>Name: ".$row['namee']."</p>
+                                                <p>Type: DVD</p>
+                                                <p>Price: ".$row['pricee']."</p>
+                                                <p>Size: ".$row['sizee']."</p>
+                                            </div>
                                         </div>";
                         }else if($row['typee'] == 'prod-Book'){
-                            echo        "<div>
-                                            <h3>Product</h3>
+                            echo        "<div class='product'>
                                             <input name='checkbox[]' type='checkbox' id='checkbox[]' value=".$row['id'].">
                                             <p>Sku: ".$row['skuu']."</p>
                                             <p>Name: ".$row['namee']."</p>
@@ -47,8 +46,7 @@
                                             <p>Weigth: ".$row['weightt']."</p>
                                         </div>";
                         }else if($row['typee'] == 'prod-Furniture'){
-                            echo        "<div>
-                                            <h3>Product</h3>
+                            echo        "<div class='product'>
                                             <input name='checkbox[]' type='checkbox' id='checkbox[]' value=".$row['id'].">
                                             <p>Sku: ".$row['skuu']."</p>
                                             <p>Name: ".$row['namee']."</p>
@@ -75,12 +73,11 @@
                     };
                     
                 ?>
-        </div>
     </main>
     <footer>
-        <div class="footer-box">
-            <h3>Scandiweb Test assigment</h3>
-        </div>
+        <h3>Scandiweb Test assigment</h3>
+
     </footer>
+    <script src="./js/function.js"></script>
 </body>
 </html>
